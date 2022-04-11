@@ -97,6 +97,9 @@ class _TimeRowState extends State<TimeRow> {
   @override
   Widget build(BuildContext context) {
     int step = _stepCalculator();
+    if (step > widget.candles.length) {
+      step = widget.candles.length - 1;
+    }
     final dif = widget.candles[0].date.difference(widget.candles[step].date);
     return Padding(
       padding: const EdgeInsets.only(right: PRICE_BAR_WIDTH + 1.0),
